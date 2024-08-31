@@ -1,0 +1,26 @@
+## Interface: 110002
+## Title: Funky |cffFF7F50Mojo|r Changer
+## Notes: Change your |cffFF7F50Specialization|r with a |cffFF7F50Funky|r Style!
+## IconAtlas: challenges-medal-small-bronze
+## AddonCompartmentFunc: fmocMinimapClick
+## AddonCompartmentFuncOnEnter: fmocMinimapOnEnter
+## AddonCompartmentFuncOnLeave: fmocMinimapOnLeave
+## DefaultState: enabled
+## SavedVariables: FMCrNumber FMCrProfile FMCrCounterLoading FMCrCounterDeleting
+## SavedVariablesPerCharacter: FMoCspecButtons FMoCtalentButtons FMoClootButton FMoCanimation FMoCtalentsProfile
+## Version: 1.23
+## Author: The_Indolent
+## X-Website: https://panosanastasiou.rocks/
+
+FMoC_Virtuals.xml
+FMoC_Zlave.xml
+FMoC_Specs.xml
+FMoC_Loot.xml
+FMoC_Talents.xml
+FMoC_FX.xml
+FMoC_Options0.xml
+FMoC_Options1.xml
+FMoC_Options2.xml
+FMoC_Options3.xml
+FMoC_Options4.xml
+FMoC_Options5.xml
