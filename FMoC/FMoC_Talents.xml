@@ -1,0 +1,28 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<EventButton name="FMoCtalentsBase" parent="UIParent" inherits="fmocPopOut" hidden="true" movable="true" clampedToScreen="true" dontSavePosition="true"/>
+	<EventButton name="fmocButtonTalents1" parent="UIParent" inherits="fmocPopOut" >
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTO="FMoCtalentsBase" relativePoint="TOPLEFT" x="0" y="0"/>
+			<Anchor point="BOTTOMRIGHT" relativeTO="FMoCtalentsBase" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+		</Anchors>
+	</EventButton>
+	<EventButton name="fmocButtonTalents2" parent="UIParent" inherits="fmocPopOut">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTO="FMoCtalentsBase" relativePoint="TOPLEFT" x="0" y="0"/>
+			<Anchor point="BOTTOMRIGHT" relativeTO="FMoCtalentsBase" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+		</Anchors>
+	</EventButton>
+	<EventButton name="fmocButtonTalents3" parent="UIParent" inherits="fmocPopOut">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTO="FMoCtalentsBase" relativePoint="TOPLEFT" x="0" y="0"/>
+			<Anchor point="BOTTOMRIGHT" relativeTO="FMoCtalentsBase" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+		</Anchors>
+	</EventButton>
+	<EventButton name="fmocButtonTalents4" parent="UIParent" inherits="fmocPopOut">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTO="FMoCtalentsBase" relativePoint="TOPLEFT" x="0" y="0"/>
+			<Anchor point="BOTTOMRIGHT" relativeTO="FMoCtalentsBase" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+		</Anchors>
+	</EventButton>
+	<Script file="FMoC_Talents.lua"/>
+</Ui>
