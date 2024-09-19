@@ -1,6 +1,6 @@
-## Title: Funky Mojo Changer
-## Addon - Script
-## Game: World of Warcraft
+### Title: Funky Mojo Changer
+### Gategory: Addon - Script
+### Game: World of Warcraft
 Funky Mojo Changer (FMoC) is an add on that enchants the way you change your specialization (a.k.a specs), your talent loadout, and your Specialization Loot!
 
 You can open the options panel in three ways.
