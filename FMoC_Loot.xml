@@ -1,8 +1,0 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
-	<Button name="fmocButtonLoot1" parent="UIParent" inherits="fmocButtonLoot"/>
-	<Button name="fmocButtonLoot2" parent="UIParent" inherits="fmocButtonLoot"/>
-	<Button name="fmocButtonLoot3" parent="UIParent" inherits="fmocButtonLoot"/>
-	<Button name="fmocButtonLoot4" parent="UIParent" inherits="fmocButtonLoot"/>
-	<Button name="fmocButtonLoot5" parent="UIParent" inherits="fmocButtonLoot"/>
-	<Script file="FMoC_Loot.lua"/>
-</Ui>
