@@ -2,7 +2,7 @@
 ..\FrameXML\UI.xsd">
 	<Script file="FMoC_Virtuals.lua"/>
 <!-- The Tabs Panel -->
-	<Frame name="fmocTabsPanel" frameStrata="DIALOG" frameLevel="250" enableMouse="true" movable="true" clampedToScreen="true" dontSavePosition="true" hidden="true" virtual="true">
+	<Frame name="fmocTabsPanel" frameStrata="DIALOG" frameLevel="250" enableKeyboard="true" enableMouse="true" movable="true" clampedToScreen="true" dontSavePosition="true" hidden="true" virtual="true">
 		<Size x="488" y="504"/>
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="-7">
@@ -41,6 +41,9 @@
 			</Button>
 		</Frames>
 		<Scripts>
+			<OnKeyDown>
+				if key == "ESCAPE" then self:SetPropagateKeyboardInput(false) self:Hide() else self:SetPropagateKeyboardInput(true) end
+			</OnKeyDown>
 			<OnHide>
 				PlaySound(858, "Master")
 			</OnHide>
