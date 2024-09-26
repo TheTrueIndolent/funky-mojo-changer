@@ -8,7 +8,7 @@
 ## DefaultState: enabled
 ## SavedVariables: FMCrNumber FMCrProfile FMCrCounterLoading FMCrCounterDeleting
 ## SavedVariablesPerCharacter: FMoCspecButtons FMoCtalentButtons FMoClootButton FMoCanimation FMoCtalentsProfile
-## Version: 1.24
+## Version: 1.25
 ## Author: The_Indolent
 ## X-Website: https://panosanastasiou.rocks/
 
