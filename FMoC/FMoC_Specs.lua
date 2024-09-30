@@ -8,6 +8,7 @@ function fmocSpecButtonsPosition()
 		_G["fmocButtonSpec"..k.."Circle"]:SetWidth(FMoCspecButtons["Demension"] * 3)
 		_G["fmocButtonSpec"..k.."Circle"]:SetHeight(FMoCspecButtons["Demension"] * 3)
 		_G["fmocButtonSpec"..k.."Circle"]:SetVertexColor(fmocClassColor:GetRGB())
+		_G["fmocButtonSpec"..k].Border:SetVertexColor(fmocClassColor:GetRGB())
 	end
 end
 -- Function for the Spec Buttons Background --
