@@ -1,5 +1,5 @@
 -- function for the position of Spec Buttons --
-function fmocSpecButtonsPosition()
+local function fmocSpecButtonsPosition()
 	for k = 1, 3, 1 do
 		_G["fmocButtonSpec"..k]:ClearAllPoints()
 		_G["fmocButtonSpec"..k]:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", FMoCspecButtons["Button"..k.."x"], FMoCspecButtons["Button"..k.."y"])
@@ -12,7 +12,7 @@ function fmocSpecButtonsPosition()
 	end
 end
 -- Function for the Spec Buttons Background --
-function fmocSpecButtonsCheck()
+local function fmocSpecButtonsCheck()
 	if GetNumSpecializations() == 2 then
 		fmocButtonSpec1:Show()
 		if GetSpecialization() == 1 then
@@ -190,3 +190,13 @@ fmocButtonSpec3:HookScript("OnClick", function (self, button, down)
 		PlaySound(841, "Master")
 	end
 end)
+-- Events Time --
+local function EventsTime(self, event, arg1, arg2, arg3, arg4)
+	if event == "PLAYER_LOGIN" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
+		fmocSpecButtonsPosition()
+		fmocSpecButtonsCheck()
+	elseif event == "PLAYER_SPECIALIZATION_CHANGED" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
+		fmocSpecButtonsCheck()
+	end
+end
+fmocZlave:HookScript("OnEvent", EventsTime)

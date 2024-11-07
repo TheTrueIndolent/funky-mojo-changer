@@ -29,7 +29,7 @@ local function ChoosingBackground(self)
 	end
 end
 -- function for the position and bg of Animation --
-function fmocAnimationBGposition()
+local function fmocAnimationBGposition()
 	if FMoCanimation["Background"] == "Class Banner" then
 		FMoCframeFX:Show()
 		FMoCframeFX1:Hide()
@@ -49,3 +49,10 @@ function fmocAnimationBGposition()
 	FMoCframeFXBG:SetSize(frameX, frameY)
 	ChoosingBackground(FMoCframeFXBG)
 end
+-- Events Time --
+local function EventsTime(self, event, arg1, arg2, arg3, arg4)
+	if event == "PLAYER_LOGIN" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
+		fmocAnimationBGposition()
+	end
+end
+fmocZlave:HookScript("OnEvent", EventsTime)

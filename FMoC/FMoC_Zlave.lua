@@ -1,3 +1,115 @@
+-- creating global variables --
+local function CreateGlobalVariables()
+-- Colors --
+	fmocMainColor = CreateColorFromRGBAHexString("F0E68CFF")
+	fmocHighColor = CreateColorFromRGBAHexString("FF7F50FF")
+	fmocNoMainColor = CreateColorFromRGBAHexString("F0E68C00")
+	fmocNoHighColor = CreateColorFromRGBAHexString("FF7F5000")
+	fmocClassColor = C_ClassColor.GetClassColor(select(2, C_PlayerInfo.GetClass(PlayerLocation:CreateFromUnit("player"))))
+-- function for showing the menu --
+	function fmocShowMenu()
+		if not InCombatLockdown() then
+			if UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
+				local _, loaded = C_AddOns.IsAddOnLoaded("FMoC_Options")
+				local loadable, reason = C_AddOns.IsAddOnLoadable("FMoC_Options" , nil , true)
+				if loadable and not loaded then
+					C_AddOns.LoadAddOn("FMoC_Options")
+					if not fmocOptions00:IsShown() then
+						fmocOptions00:Show()
+					else
+						fmocOptions00:Hide()
+					end
+				elseif loadable and loaded then
+					if not fmocOptions00:IsShown() then
+						fmocOptions00:Show()
+					else
+						fmocOptions00:Hide()
+					end
+				else
+					local fmocTime = GameTime_GetTime(false)
+					DEFAULT_CHAT_FRAME:AddMessage(fmocTime.." |A:"..C_AddOns.GetAddOnMetadata("FMoC", "IconAtlas")..":16:16|a ["..fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC", "Title")).."] The addon with the name "..fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC_Options", "Title")).." is "..reason.."!")
+				end
+			else
+				local fmocTime = GameTime_GetTime(false)
+				DEFAULT_CHAT_FRAME:AddMessage(fmocTime.." |A:"..C_AddOns.GetAddOnMetadata("FMoC", "IconAtlas")..":16:16|a ["..fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC", "Title")).."] You have to be level 10 in order to use this add on!")
+			end
+		else
+			local fmocTime = GameTime_GetTime(false)
+			DEFAULT_CHAT_FRAME:AddMessage(fmocTime.." |A:"..C_AddOns.GetAddOnMetadata("FMoC", "IconAtlas")..":16:16|a ["..fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC", "Title")).."] While you are in combat, you can't do this!")
+		end
+	end
+-- Slash Command --
+	RegisterNewSlashCommand(fmocShowMenu, "fmoc", "funkymojochanger")
+-- Mini Map Button Functions --
+	AddonCompartmentFrame:RegisterAddon({
+		text = fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC", "Title")),
+		icon = C_AddOns.GetAddOnMetadata("FMoC", "IconAtlas"),
+		notCheckable = true,
+		func = function(button, menuInputData, menu)
+			local buttonName = menuInputData.buttonName
+			if buttonName == "LeftButton" then
+				fmocShowMenu()
+			end
+		end,
+		funcOnEnter = function(button)
+			MenuUtil.ShowTooltip(button, function(tooltip)
+			tooltip:SetText("|A:"..C_AddOns.GetAddOnMetadata("FMoC", "IconAtlas")..":16:16|a "..fmocMainColor:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("FMoC", "Title")).."|nLeft Click: "..fmocMainColor:WrapTextInColorCode("Open the main panel of settings!"))
+			end)
+		end,
+		funcOnLeave = function(button)
+			MenuUtil.HideTooltip(button)
+		end,
+	})
+-- click on Pop Out --
+	function fmocClickPopOut(var1, var2)
+		var1:SetScript("OnClick", function(self, button, down)
+			if button == "LeftButton" and down == false then
+				if not var2:IsShown() then
+					var2:Show()
+					PlaySound(855, "Master")
+				else
+					var2:Hide()
+				end
+			end
+		end)
+	end
+-- functions for the buttons and popouts --
+-- on enter --
+	function fmocEnteringMenus(self)
+		GameTooltip_ClearStatusBars(GameTooltip)
+		GameTooltip:SetOwner(self, "ANCHOR_NONE")
+		GameTooltip:ClearAllPoints()
+		GameTooltip:SetPoint("RIGHT", self, "LEFT", 0, 0)
+	end
+-- on leave --
+	function fmocLeavingMenus()
+		GameTooltip:Hide()
+	end
+-- functions for the spec and loot buttons --
+-- on enter --
+	function fmocEntering(self)
+		self.Background:SetDesaturated(false)
+		GameTooltip_ClearStatusBars(GameTooltip)
+		GameTooltip:SetOwner(self, "ANCHOR_NONE")
+		GameTooltip:ClearAllPoints()
+		GameTooltip:SetPoint("TOP", self, "BOTTOM", 0, 0)
+	end
+-- on leave --
+	function fmocLeaving(self)
+		self.Background:SetDesaturated(true)
+		GameTooltip:Hide()
+	end
+-- Some Variables --
+	FMoCspec1Layouts = 0
+	FMoCspec2Layouts = 0
+	FMoCspec3Layouts = 0
+	FMoCspec4Layouts = 0
+-- taking care of the click pop out talents button --
+	fmocClickPopOut(fmocButtonTalents1, fmocButtonTalents1Choice0)
+	fmocClickPopOut(fmocButtonTalents2, fmocButtonTalents2Choice0)
+	fmocClickPopOut(fmocButtonTalents3, fmocButtonTalents3Choice0)
+	fmocClickPopOut(fmocButtonTalents4, fmocButtonTalents4Choice0)
+end
 -- function for main animation --
 local function MainAnimation()
 	if FMoCanimation["Background"] == "Class Banner" then
@@ -83,28 +195,12 @@ end
 -- Events Time --
 local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 	if event == "PLAYER_LOGIN" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
-		fmocClassColor = C_ClassColor.GetClassColor(select(2, C_PlayerInfo.GetClass(PlayerLocation:CreateFromUnit("player"))))
+		CreateGlobalVariables()
 		FirstTimeVariables()
-		fmocSpecButtonsPosition()
-		fmocSpecButtonsCheck()
-		fmocAnimationBGposition()
-		fmocLootButtonsPosition()
-		fmocLootButtonsShowHide()
-		fmocLootButtonsSpecCheck()
-		fmocTalentsButtonsPosition()
-		fmocTalentsButtonsDirection()
-		fmocTalentsButtonsCreate()
-		fmocProfileTalentsEquipment()
-		fmocTalentsButtonsShow()
-		fmocTalentsButtonsCheck()
-		fmocEquipmentButtonsCreate()
-		fmocEquipmentTalentsButtonsCreate()
 	elseif event == "PLAYER_SPECIALIZATION_CHANGED" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
-		fmocSpecButtonsCheck()
-		fmocTalentsButtonsShow()
-		fmocTalentsButtonsPreCheck()
-		fmocTalentsButtonsCheck()
-		fmocEquipmentTalentsButtonsShow()
+		local _, loaded = C_AddOns.IsAddOnLoaded("FMoC_Options")
+		local loadable, reason = C_AddOns.IsAddOnLoadable("FMoC_Options" , nil , true)
+		if loadable and loaded then fmocEquipmentTalentsButtonsShow() end
 	elseif event == "UNIT_SPELLCAST_START" and arg1 == "player" and (arg3 == 200749 or arg3 == 384255) then
 		if arg3 == 200749 then
 			if fmocButtonPressed == 1 then 
@@ -132,12 +228,6 @@ local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 		if fmocButtonSpec3.Animation:IsPlaying() then fmocButtonSpec3.Animation:Stop() end
 		if FMoCframeFX.Animation:IsPlaying() then FMoCframeFX.Animation:Stop() end
 		if FMoCframeFX1.Animation:IsPlaying() then FMoCframeFX1.Animation:Stop() end
-		fmocTalentsButtonsCheck()
-	elseif event == "UNIT_SPELLCAST_SUCCEEDED" and arg1 == "player" and arg3 == 384255 then
-		fmocTalentsButtonsPreCheck()
-		fmocTalentsButtonsCheck()
-	elseif event == "PLAYER_LOOT_SPEC_UPDATED" and UnitLevel("player") >= 10 and GetSpecialization() ~= 5 then
-		fmocLootButtonsSpecCheck()
 	end
 end
 fmocZlave:SetScript("OnEvent", EventsTime)
