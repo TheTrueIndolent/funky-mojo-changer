@@ -1,11 +1,11 @@
-## Interface: 110005
+## Interface: 110007
 ## Title: Funky |cffFF7F50Mojo|r Changer |cffFF7F50Options|r
 ## Notes: |cffF0E68COptions for the Funky |cffFF7F50Mojo|r Changer|r!
 ## IconAtlas: challenges-medal-small-bronze
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: FMoC
-## Version: 1.28
+## Version: 1.29
 ## Author: The_Indolent
 ## X-Website: https://panosanastasiou.rocks/
 
