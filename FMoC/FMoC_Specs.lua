@@ -95,19 +95,19 @@ fmocButtonSpec1:HookScript("OnClick", function (self, button, down)
 	if button == "LeftButton" and down == false then
 		if GetNumSpecializations() == 2 then
 			if GetSpecialization()== 1 then
-				SetSpecialization(2)
-			else SetSpecialization(1)
+				C_SpecializationInfo.SetSpecialization(2)
+			else C_SpecializationInfo.SetSpecialization(1)
 			end
 		elseif GetNumSpecializations() == 3 then
 			if GetSpecialization() == 1 then
-				SetSpecialization(2)
+				C_SpecializationInfo.SetSpecialization(2)
 			else
-				SetSpecialization(1)
+				C_SpecializationInfo.SetSpecialization(1)
 			end
 		elseif GetNumSpecializations() == 4 then
 			if GetSpecialization() == 1 then
-				SetSpecialization(2)
-			else SetSpecialization(1)
+				C_SpecializationInfo.SetSpecialization(2)
+			else C_SpecializationInfo.SetSpecialization(1)
 			end
 		end
 		fmocButtonPressed = 1
@@ -147,14 +147,14 @@ fmocButtonSpec2:HookScript("OnClick", function (self, button, down)
 	if button == "LeftButton" and down == false then
 		if GetNumSpecializations() == 3 then
 			if GetSpecialization() == 1 or GetSpecialization() == 2 then
-				SetSpecialization(3)
+				C_SpecializationInfo.SetSpecialization(3)
 			else
-				SetSpecialization(2)
+				C_SpecializationInfo.SetSpecialization(2)
 			end
 		elseif GetNumSpecializations() == 4 then
 			if GetSpecialization()== 1 or GetSpecialization() == 2 then
-				SetSpecialization(3)
-			else SetSpecialization(2)
+				C_SpecializationInfo.SetSpecialization(3)
+			else C_SpecializationInfo.SetSpecialization(2)
 			end
 		end
 		fmocButtonPressed = 2
@@ -183,8 +183,8 @@ end)
 fmocButtonSpec3:HookScript("OnClick", function (self, button, down)
 	if button == "LeftButton" and down == false then
 		if GetSpecialization() == 4 then
-			SetSpecialization(3)
-		else SetSpecialization(4)
+			C_SpecializationInfo.SetSpecialization(3)
+		else C_SpecializationInfo.SetSpecialization(4)
 		end
 		fmocButtonPressed = 3
 		PlaySound(841, "Master")
