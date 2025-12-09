@@ -1,4 +1,4 @@
-## Interface: 110200
+## Interface: 110207
 ## Category: User Interface
 ## Category-deDE: Benutzerinterface
 ## Category-esES: Interfaz de usuario
@@ -16,7 +16,7 @@
 ## DefaultState: enabled
 ## SavedVariables: FMCrNumber FMCrProfile FMCrCounterLoading FMCrCounterDeleting
 ## SavedVariablesPerCharacter: FMoCspecButtons FMoCtalentButtons FMoClootButton FMoCanimation FMoCtalentsProfile
-## Version: 1.31
+## Version: 1.32
 ## Author: The_Indolent
 ## X-Website: https://panosanastasiou.rocks/
 
@@ -25,4 +25,5 @@ FMoC_Specs.xml
 FMoC_Loot.xml
 FMoC_Talents.xml
 FMoC_FX.xml
+
 
