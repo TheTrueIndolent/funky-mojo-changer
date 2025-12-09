@@ -1,4 +1,4 @@
-## Interface: 110200
+## Interface: 110207
 ## Category: User Interface
 ## Category-deDE: Benutzerinterface
 ## Category-esES: Interfaz de usuario
@@ -16,7 +16,7 @@
 ## DefaultState: enabled
 ## LoadOnDemand: 1
 ## Dependencies: FMoC
-## Version: 1.31
+## Version: 1.32
 ## Author: The_Indolent
 ## X-Website: https://panosanastasiou.rocks/
 
@@ -27,4 +27,5 @@ FMoC_Options2.xml
 FMoC_Options3.xml
 FMoC_Options4.xml
 FMoC_Options5.xml
+
 
